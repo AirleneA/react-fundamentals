@@ -23,13 +23,39 @@
       </div>
     )*/
     
-     const element = (
+    /*
+    const element = (
       <div className="container">
         {message('Hello World!')}
         {message('Goodbye World...')}
       </div>
+      */
+      // RENDERIZAR é colocar processo de transformar uma intruções escritas em JS
+      //em elementos HTML
 
+      //Função e, JS que retorna um componente React personalizado. Esse componente
+      // também possui props personalizadas (subject e greeting)
+      function Message({subject, greeting}) {
+          return(
+              <div classname="message">
+                {greeting}, {subject}
+            </div>
+          )
+      }
 
+ //Quando uma função retorna um codigo JSX renderizavel'(ou seja, )
+ //que pode se tornar código HTML), a função pode ser usadacomo se
+ //fosse uma tag HTML e os respectivos parâmetros são passados como
+ //atributos dessa tag HTML "personalixada"<div class="">//para diferenciar essas funções de componente de tags HTML comuns,
+// o react adota como convenção nomeá-las com inicial maiúsculas
+// a ordem não importa
+      const element = (
+        <div className="container">
+            <Message subject= "Word!" greeting= "Hello"/>
+            <Message greeting= "Goofdbye" subject = "World..."/>
+            <mensage subject = "mamãe" greeting="Alô"/>
+        </div>
+        
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
     ReactDOM.render(element, document.getElementById('root'))
   </script>
