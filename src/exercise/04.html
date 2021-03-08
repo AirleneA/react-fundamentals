@@ -8,61 +8,73 @@
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
   <script type="text/babel">
     // 🐨 Make a function called `message` which returns the JSX we want to share
-   /* function message(msg) {
-        return <div classname="message">{msg}</div>
+    
+    /*function message(msg) {
+      return <div className="message">{msg}</div>
     }*/
-    const message = msg => <div className="message">{msg}</div>
+    const message = props => <div className="message" {...props}></div>
+
     // 🐨 use that function in place of the divs below with:
     // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
     
-    /*
-    const element = (
+    /*const element = (
       <div className="container">
         <div className="message">Hello World</div>
         <div className="message">Goodbye World</div>
       </div>
     )*/
-    
+
     /*
     const element = (
       <div className="container">
-        {message('Hello World!')}
-        {message('Goodbye World...')}
+        {message({children :'Hello World!'})}
+        {message({id: 'goodbye', children:'Goodbye World...'})}
       </div>
-      */
-      // RENDERIZAR é colocar processo de transformar uma intruções escritas em JS
-      //em elementos HTML
+    )
+    */
 
-      //Função e, JS que retorna um componente React personalizado. Esse componente
-      // também possui props personalizadas (subject e greeting)
-      function Message({subject, greeting}) {
-          return(
-              <div classname="message">
-                {greeting}, {subject}
-            </div>
-          )
+    // Renderizar -> processo de transformar instruções escritas em JS
+    // em elementos HTML
 
-
-     }
-
-
-     //React.Fragment é um "pseudoelemento" que exite para cumprir
-     // com a exigência de todo conteúdo rendenrizável em JSX estar
-     // dentro de alguma tag. No entando 
-
- //Quando uma função retorna um codigo JSX renderizavel'(ou seja, )
- //que pode se tornar código HTML), a função pode ser usadacomo se
- //fosse uma tag HTML e os respectivos parâmetros são passados como
- //atributos dessa tag HTML "personalixada"<div class="">//para diferenciar essas funções de componente de tags HTML comuns,
-// o react adota como convenção nomeá-las com inicial maiúsculas
-// a ordem não importa
-      const element = (
-        <div className="container">
-            <Message subject= "Word!" greeting= "Hello"/>
-            <Message greeting= "Goofdbye" subject = "World..."/>
-            <mensage subject = "mamãe" greeting="Alô"/>
+    // Função em JS que retorna um componente React personalizado. Esse componente
+    // também possui props personalizadas (subject e greeting).
+    function Message({subject, greeting}) {
+      return (
+        <div className="message">
+          {greeting}, {subject}
         </div>
-        
+      )
+    }
+
+    // React.Fragment é um "pseudoelemento" que existe para cumprir
+    // com a exigência de todo conteúdo renderizável em JSX estar
+    // dentro de alguma tag. No entanto, React.Fragment não gera
+    // nenhum elemento HTML.
+    function Message2({subject, greeting}) {
+      return (
+        <React.Fragment>
+          {greeting}, {subject}
+        </React.Fragment>
+      )
+    }
+
+    // Quando uma função retorna um código JSX renderizável (ou seja, 
+    // que pode se tornar código HTML), a função pode ser usada como se 
+    // fosse uma tag HTML e os respectivos parâmetros são passados como
+    // atributos dessa tag HTML "personalizada".
+    // Para diferenciar essas funções de componente de tags HTML comuns,
+    // o React adota como convenção nomeá-las com inicial maiúscula.
+    const element = (
+      <div className="container">
+        <Message subject="World!" greeting="Hello" />
+        <Message greeting="Goodbye" subject="World..." />
+        <Message subject="mamãe" greeting="Alô" />
+
+        <Message2 greeting="Olá" subject="Message2" />
+        <Message2 greeting="Bom dia" subject="teste!" />
+      </div>
+    )
+
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
     ReactDOM.render(element, document.getElementById('root'))
   </script>
