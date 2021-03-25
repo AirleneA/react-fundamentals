@@ -8,7 +8,7 @@
 <body>
 
   <div id="root"></div>
-  
+
   <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
@@ -19,48 +19,20 @@
       Usando os recursos do React (manupuladores de evento, useRef e useState),
       escreva o nome completo da pessoa (EM MAIÚSCULAS) toda vez que houver 
       alteração nos campos de nome ou sobrenome.
-
-      1) Criar dois useRef e associá-los aos inputs.
-      2) Criar um useState para armazenar o nome completo.
-      3) Criar uma função para manipular o evento onChange dos inputs. Nessa
-         função, deve-se ler os valores de ambos os inputs (com as refs), formar 
-         o nome completo em maiúsculas e guardá-lo na variável de estado.
-      4) Usar a variável de estado para atualizar o conteúdo da div do nome completo.
-      
     */
 
     function MeuForm(props) {
-
-      // 1) Criar dois useRef e associá-los aos inputs.
-      const elNome = React.useRef()
-      const elSobrenome = React.useRef()
-
-      // 2) Criar um useState para armazenar o nome completo.
-      const [nomeCompleto, setNomeCompleto] = React.useState('')
-
-      // 3) Criar uma função para manipular o evento onChange dos inputs. Nessa
-      //   função, deve-se ler os valores de ambos os inputs (com as refs), formar 
-      //   o nome completo em maiúsculas e guardá-lo na variável de estado.
-      function handleChange(event) {
-        const parte1 = elNome.current.value  // Conteúdo do input nome
-        const parte2 = elSobrenome.current.value // Conteúdo do input sobrenome
-
-        // Atualizando a variável de estado
-        setNomeCompleto(parte1.toUpperCase() + ' ' + parte2.toUpperCase())
-      }
-
       return (
         <form>
           <div>
             <label htmlFor="nome">Nome</label>
-            <input id="nome" ref={elNome} onChange={handleChange} />
+            <input id="nome" />
           </div>
           <div>
             <label htmlFor="sobrenome">Sobrenome</label>
-            <input id="sobrenome" ref={elSobrenome} onChange={handleChange} />
+            <input id="sobrenome" />
           </div>
-          {/* 4) Usar a variável de estado para atualizar o conteúdo da div do nome completo. */}
-          <div id="nomeCompleto">{nomeCompleto}</div>         
+          <div id="nomeCompleto"></div>         
         </form>
       )
     }
@@ -68,3 +40,6 @@
     ReactDOM.render(<MeuForm />, document.getElementById('root'))
 
   </script>
+
+</body>
+</html> 

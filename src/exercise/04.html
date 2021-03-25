@@ -1,6 +1,5 @@
 <!-- Creating custom components -->
 <!-- http://localhost:3000/isolated/exercise/04.html -->
-
 <body>
   <div id="root"></div>
   <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
@@ -13,7 +12,6 @@
       return <div className="message">{msg}</div>
     }*/
     const message = props => <div className="message" {...props}></div>
-
     // 🐨 use that function in place of the divs below with:
     // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
     
@@ -46,18 +44,6 @@
       )
     }
 
-    // React.Fragment é um "pseudoelemento" que existe para cumprir
-    // com a exigência de todo conteúdo renderizável em JSX estar
-    // dentro de alguma tag. No entanto, React.Fragment não gera
-    // nenhum elemento HTML.
-    function Message2({subject, greeting}) {
-      return (
-        <React.Fragment>
-          {greeting}, {subject}
-        </React.Fragment>
-      )
-    }
-
     // Quando uma função retorna um código JSX renderizável (ou seja, 
     // que pode se tornar código HTML), a função pode ser usada como se 
     // fosse uma tag HTML e os respectivos parâmetros são passados como
@@ -69,13 +55,9 @@
         <Message subject="World!" greeting="Hello" />
         <Message greeting="Goodbye" subject="World..." />
         <Message subject="mamãe" greeting="Alô" />
-
-        <Message2 greeting="Olá" subject="Message2" />
-        <Message2 greeting="Bom dia" subject="teste!" />
       </div>
     )
 
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
     ReactDOM.render(element, document.getElementById('root'))
-  </script>
-</body>
+    

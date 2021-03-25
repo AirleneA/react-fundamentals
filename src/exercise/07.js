@@ -8,6 +8,7 @@ const allItems = [
   {id: 'orange', value: '🍊 orange'},
   {id: 'grape', value: '🍇 grape'},
   {id: 'pear', value: '🍐 pear'},
+  {id: 'strawberry', value: '🍓 strawberry'},
 ]
 
 function App() {
@@ -16,8 +17,8 @@ function App() {
   function addItem() {
     setItems([
       ...items,
-      //Procura no vetor allItens qual item não tem 
-      //e o inclui
+      // Procura no vetor allItems qual item não está no vetor items
+      // e o inclui
       allItems.find(i => !items.map(({id}) => id).includes(i.id)),
     ])
   }
@@ -26,7 +27,7 @@ function App() {
     setItems(items.filter(i => i.id !== item.id))
   }
 
-  return (
+ return (
     <div className="keys">
       <button disabled={items.length >= allItems.length} onClick={addItem}>
         add item
@@ -34,7 +35,7 @@ function App() {
       <ul style={{listStyle: 'none', paddingLeft: 0}}>
         {items.map(item => (
           // 🐨 add a key prop to the <li> below. Set it to item.id
-          <li key={item.id}>
+         <li key={item.id}>
             <button onClick={() => removeItem(item)}>remove</button>{' '}
             <label htmlFor={`${item.id}-input`}>{item.value}</label>{' '}
             <input id={`${item.id}-input`} defaultValue={item.value} />
